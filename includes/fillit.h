@@ -66,11 +66,13 @@ typedef struct 	s_info
 {
 	t_tetri id;
 	t_coord diezes_pos[NB_DIEZE_POS];
+	t_coord	max_origin;
 }				t_info;
 
-extern const t_info	list_tetri[NB_TETRIS];
-int					read_fuck(int fd, char *b, size_t size);
-int					parse_buf_2_sq(const char buf[21], t_square tab);
-int					parse(const char buf[21], t_tetri *tetri);
+extern t_info	list_tetri[NB_TETRIS];
+int				read_fuck(int fd, char *b, size_t size);
+void			make_max_origins(t_info list_tetri[NB_TETRIS]);
+int				parse_buf_2_sq(const char buf[21], t_square tab);
+int				parse(const char buf[21], t_tetri *tetri);
 
 #endif

@@ -25,6 +25,7 @@ int		main(int ac, char **av)
 		return (1);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return(0);
+	make_max_origins(list_tetri);
 	while (read_fuck(fd, buf, BUF_SIZE) == 1)
 	{
 		if (parse(buf, &tetri) == ERROR)
