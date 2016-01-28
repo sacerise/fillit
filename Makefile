@@ -14,7 +14,7 @@ NAME=fillit
 
 LIB=libft/libft.a
 
-INC=includes
+INC=libft/
 
 CC=gcc
 
@@ -31,6 +31,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
 	$(CC) $+ -o $@
+
+$(LIB):
+	$(MAKE) -C libft/
 
 .PHONY: 
 	clean fclean re all

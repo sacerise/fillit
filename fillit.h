@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include "libft.h"
+# include <libft.h>
 
 # define BUF_SIZE 21
 # define OK 1
