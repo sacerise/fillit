@@ -33,9 +33,12 @@ typedef	struct s_coord
 	size_t	y;
 }				t_coord;
 
-# define INDEX(tab, coord) ((tab)[(coord).y][(coord).x])
 
-enum 	e_list
+
+# define INDEX(tab, coord) ((tab)[(coord).y][(coord).x])
+# define NB_TETRIS 2
+
+typedef enum 	e_tetri
 {
 	TETRI_1,
 	TETRI_2,
@@ -56,10 +59,17 @@ enum 	e_list
 	TETRI_17,
 	TETRI_18,
 	TETRI_19,
-};
+}				t_tetri;
 
-char	*ft_read(char *file);
-int		ft_parse_sq(const char buf[21], bool tab[4][4]);
-int		ft_parse_tetri_1(bool tab[4][4]);
+typedef struct 	s_info
+{
+	t_tetri id;
+	t_coord diezes_pos[4];
+}				t_info;
+
+extern const t_info	list_tetri[NB_TETRIS];
+int					read_fuck(int fd, char *b, size_t size);
+int					parse_buf_2_sq(const char buf[21], t_square tab);
+int					parse(const char buf[21], t_tetri *tetri);
 
 #endif

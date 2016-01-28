@@ -12,7 +12,38 @@
 
 #include "fillit.h"
 
-int		ft_read_fuck(int fd, char *b, size_t size)
+int		parse_buf_2_sq(const char buf[21], t_square tab)
+{
+	size_t	i;
+	size_t	x;
+	size_t	y;
+
+	i = 0;
+	y = 0;
+
+	while (y < 4)
+	{
+		x = 0;
+		while (x < 4)
+		{
+			if(buf[i] == '#')
+				tab[y][x] = DIEZE;
+			else if (buf[i] == '.')
+				tab[y][x] = POINT;
+			else
+				return (ERROR);
+			x++;
+			i++;
+		}
+		if (buf[i] != '\n')
+			return (ERROR);
+		y++;
+		i++;
+	}
+	return (OK);
+}
+
+int		read_fuck(int fd, char *b, size_t size)
 {
 	int		ret;
 	size_t	count;
@@ -28,26 +59,5 @@ int		ft_read_fuck(int fd, char *b, size_t size)
 	return(1);
 }
 
-	int		main(int ac, char **av)
-{
 
-	int 	fd;
-	char 	buf[BUF_SIZE];
-	bool	tab[4][4];
-
-	fd = 0;
-	if (ac != 2)
-		return (1);
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return(0);
-	while (ft_read_fuck(fd, buf, BUF_SIZE) == 1)
-	{
-		if (ft_parse_sq(buf, tab) == ERROR)
-			ft_putendl("ERROR");
-		else
-			write(1, buf, BUF_SIZE);		
-	}
-	close(fd);
-	return (0);
-}
 

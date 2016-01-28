@@ -13,37 +13,6 @@
 #include "fillit.h"
 #include <stdio.h>
 
-int		ft_parse_sq(const char buf[21], bool tab[4][4])
-{
-	size_t	i;
-	size_t	x;
-	size_t	y;
-
-	i = 0;
-	y = 0;
-
-	while (y < 4)
-	{
-		x = 0;
-		while (x < 4)
-		{
-			if(buf[i] == '#')
-				tab[y][x] = DIEZE;
-			else if (buf[i] == '.')
-				tab[y][x] = POINT;
-			else
-				return (ERROR);
-			x++;
-			i++;
-		}
-		if (buf[i] != '\n')
-			return (ERROR);
-		y++;
-		i++;
-	}
-	return (OK);
-}
-
 void	copy_tab(t_square dst, const t_square src)
 {
 	t_coord	coord;
@@ -80,7 +49,6 @@ bool	is_empty_tab(const t_square tab)
 	return (true);
 }
 
-const t_coord tetri_19[4] = {{0,0}, {0,1}, {1,1}, {1,2}};
 
 t_coord	add_coord(const t_coord c1, const t_coord c2)
 {
@@ -93,30 +61,52 @@ t_coord	add_coord(const t_coord c1, const t_coord c2)
 
 int		test_tetri(const t_square tab, const t_coord diezes_pos[4], t_coord origin)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (INDEX(tab, add_coord(origin, diezes_pos[i])) == ERROR)
-			return (ERROR);
-	}
-	return (OK);
-}
-
-int		test_tetri_only(const t_square tab, const t_coord diezes_pos[4], t_coord origin)
-{
-	t_square	cpy;
 	size_t		i;
+	t_square	cpy;
 
-	if (test_tetri(tab, diezes_pos,origin) == ERROR)
-		return (ERROR);
 	copy_tab(cpy, tab);
 	i = 0;
 	while (i < 4)
-		INDEX(cpy, add_coord(origin, diezes_pos[i])) = POINT;
+	{
+		if (INDEX(cpy, add_coord(origin, diezes_pos[i])) == DIEZE)
+		{
+			INDEX(cpy, add_coord(origin, diezes_pos[i])) = POINT;
+		}
+		else
+			return (ERROR);
+		i++;
+	}
 	if (is_empty_tab(cpy))
 		return (OK);
 	else
 		return (ERROR);
 }
+
+int		parse_sq(const t_square tab, t_tetri *tetri_p)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < NB_TETRIS)
+	{
+		if (test_tetri(tab, list_tetri[i].diezes_pos, (t_coord){0,0}) == OK)
+		{	
+			*tetri_p = list_tetri[i].id;
+			return (OK);
+		}
+		i++;
+	}
+
+	return (ERROR);
+}	
+
+int		parse(const char buf[21], t_tetri *tetri)
+{
+	t_square	tab;
+
+	if (parse_buf_2_sq(buf, tab) == ERROR)
+		return (ERROR);
+	return (parse_sq(tab, tetri));
+}
+
+
