@@ -59,14 +59,14 @@ t_coord	add_coord(const t_coord c1, const t_coord c2)
 	return (tmp);
 }
 
-int		test_tetri(const t_square tab, const t_coord diezes_pos[4], t_coord origin)
+int		test_tetri(const t_square tab, const t_coord diezes_pos[NB_DIEZE_POS], t_coord origin)
 {
 	size_t		i;
 	t_square	cpy;
 
 	copy_tab(cpy, tab);
 	i = 0;
-	while (i < 4)
+	while (i < NB_DIEZE_POS)
 	{
 		if (INDEX(cpy, add_coord(origin, diezes_pos[i])) == DIEZE)
 		{

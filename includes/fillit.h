@@ -36,6 +36,7 @@ typedef	struct s_coord
 
 
 # define INDEX(tab, coord) ((tab)[(coord).y][(coord).x])
+# define NB_DIEZE_POS 4
 # define NB_TETRIS 2
 
 typedef enum 	e_tetri
@@ -64,7 +65,7 @@ typedef enum 	e_tetri
 typedef struct 	s_info
 {
 	t_tetri id;
-	t_coord diezes_pos[4];
+	t_coord diezes_pos[NB_DIEZE_POS];
 }				t_info;
 
 extern const t_info	list_tetri[NB_TETRIS];
