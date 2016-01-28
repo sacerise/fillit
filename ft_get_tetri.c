@@ -82,6 +82,25 @@ int		test_tetri(const t_square tab, const t_coord diezes_pos[NB_DIEZE_POS], t_co
 		return (ERROR);
 }
 
+int		test_origins(const t_square tab, const t_info *info)
+{
+		t_coord	origin;
+
+		origin.y = 0;
+		while (origin.y <= info->max_origin.y)
+		{
+			origin.x = 0;
+			while (origin.x <= info->max_origin.x)
+			{
+				if (test_tetri(tab, info->diezes_pos, origin) == OK)
+					return (OK);
+				origin.x++;
+			}
+			origin.y++;
+		}
+		return (ERROR);
+}
+
 int		parse_sq(const t_square tab, t_tetri *tetri_p)
 {
 	size_t	i;
@@ -89,8 +108,8 @@ int		parse_sq(const t_square tab, t_tetri *tetri_p)
 	i = 0;
 	while (i < NB_TETRIS)
 	{
-		if (test_tetri(tab, list_tetri[i].diezes_pos, (t_coord){0,0}) == OK)
-		{	
+		if (test_origins(tab, &list_tetri[i]) == OK)
+		{
 			*tetri_p = list_tetri[i].id;
 			return (OK);
 		}
@@ -108,5 +127,3 @@ int		parse(const char buf[21], t_tetri *tetri)
 		return (ERROR);
 	return (parse_sq(tab, tetri));
 }
-
-
