@@ -37,7 +37,7 @@ typedef	struct s_coord
 
 # define INDEX(tab, coord) ((tab)[(coord).y][(coord).x])
 # define NB_DIEZE_POS 4
-# define NB_TETRIS 2
+# define NB_TETRIS 19
 
 typedef enum 	e_tetri
 {
