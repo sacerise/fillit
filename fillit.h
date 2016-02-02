@@ -24,6 +24,7 @@
 # define ERROR 0
 # define DIEZE true
 # define POINT false
+# define NB_LIST_TETRI_MAX 26
 
 typedef	bool	t_square[4][4];
 
@@ -74,5 +75,6 @@ int				read_fuck(int fd, char *b, size_t size);
 void			make_max_origins(t_info list_tetri[NB_TETRIS]);
 int				parse_buf_2_sq(const char buf[BUF_SIZE], t_square tab);
 int				parse(const char buf[BUF_SIZE], t_tetri *tetri);
+void			algo_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri);
 
 #endif

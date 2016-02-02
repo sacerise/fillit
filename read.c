@@ -52,12 +52,17 @@ int		read_fuck(int fd, char *b, size_t size)
 	while (count < size)
 	{
 		ret = read(fd, &b[count], size - count);
-		if (ret <= 0)
-			return (ret);
+		if (ret == -1)
+			return (-1);
+		else if (ret == 0)
+		{
+			if (count != 0)
+				return (-1);
+			else
+				return (0);
+		}
 		count += ret;
 	}
 	return(1);
 }
-
-
 
