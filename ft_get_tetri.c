@@ -87,10 +87,10 @@ int		test_origins(const t_square tab, const t_info *info)
 		t_coord	origin;
 
 		origin.y = 0;
-		while (origin.y <= info->max_origin.y)
+		while (origin.y <= 4 - info->size.y)
 		{
 			origin.x = 0;
-			while (origin.x <= info->max_origin.x)
+			while (origin.x <= 4 - info->size.x)
 			{
 				if (test_tetri(tab, info->diezes_pos, origin) == OK)
 					return (OK);

@@ -23,23 +23,23 @@ static t_coord	coord_max(t_coord diezes_pos[NB_DIEZE_POS])
 	return (max_coord);
 }
 
-static void		make_max_origin(t_info *info)
+static void		make_size(t_info *info)
 {
 	t_coord	max_coord;
 
 	max_coord = coord_max(info->diezes_pos);
-	info->max_origin.x = 3 - max_coord.x;
-	(*info).max_origin.y = 3 - max_coord.y;
+	info->size.x = max_coord.x + 1;
+	(*info).size.y = max_coord.y + 1;
 }
 
-void			make_max_origins(t_info list_tetri[NB_TETRIS])
+void			make_sizes(t_info list_tetri[NB_TETRIS])
 {
 	size_t i;
 
 	i = 0;
 	while (i < NB_TETRIS)
 	{
-		make_max_origin(&list_tetri[i]);
+		make_size(&list_tetri[i]);
 		i++;
 	}
 }

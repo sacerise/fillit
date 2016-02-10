@@ -41,7 +41,7 @@ int		main(int ac, char **av)
 		return (1);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return(0);
-	make_max_origins(list_tetri);
+	make_sizes(list_tetri);
 	nb_tetri = 0;
 	while (nb_tetri < NB_LIST_TETRI_MAX && (ret = read_tetri(fd, &tetri)) == 1)
 	{
