@@ -13,23 +13,6 @@
 #include "fillit.h"
 #include <stdio.h>
 
-void	copy_tab(t_square dst, const t_square src)
-{
-	t_coord	coord;
-
-	coord.y = 0;
-	while (coord.y < 4)
-	{
-		coord.x = 0;
-		while (coord.x < 4)
-		{
-			INDEX(dst, coord) = INDEX(src, coord);
-			coord.x++;
-		}
-		coord.y++;
-	}
-}
-
 bool	is_empty_tab(const t_square tab)
 {
 	t_coord	coord;
@@ -50,21 +33,12 @@ bool	is_empty_tab(const t_square tab)
 }
 
 
-t_coord	add_coord(const t_coord c1, const t_coord c2)
-{
-	t_coord tmp;
-
-	tmp.x = c1.x + c2.x;
-	tmp.y = c1.y + c2.y;
-	return (tmp);
-}
-
 int		test_tetri(const t_square tab, const t_coord diezes_pos[NB_DIEZE_POS], t_coord origin)
 {
 	size_t		i;
 	t_square	cpy;
 
-	copy_tab(cpy, tab);
+	copy_sq(cpy, tab);
 	i = 0;
 	while (i < NB_DIEZE_POS)
 	{

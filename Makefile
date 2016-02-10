@@ -22,7 +22,7 @@ CFLAGS= -Wall -Wextra -Werror
 
 RM=rm -f
 
-OBJ=read.o ft_get_tetri.o main.o list_tetri.o origins.o algo.o
+OBJ=read.o ft_get_tetri.o main.o list_tetri.o origins.o algo.o tools.o
 
 all: $(NAME)
 
