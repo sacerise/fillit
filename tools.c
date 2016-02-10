@@ -17,6 +17,11 @@ void	copy_sq(t_square dst, const t_square src)
 	}
 }
 
+void	copy_tab(size_t s, char dst[s][s], const char src[s][s])
+{
+	ft_memcpy(dst, src, s * s);
+}
+
 t_coord	add_coord(const t_coord c1, const t_coord c2)
 {
 	t_coord tmp;
@@ -24,4 +29,17 @@ t_coord	add_coord(const t_coord c1, const t_coord c2)
 	tmp.x = c1.x + c2.x;
 	tmp.y = c1.y + c2.y;
 	return (tmp);
+}
+
+void	print_tab(size_t s, char tab[s][s])
+{
+	size_t i;
+
+	i = 0;
+	while (i < s)
+	{
+		write(1, tab[i], s);
+		ft_putendl("");
+		i++;
+	}
 }
