@@ -1,33 +1,20 @@
 #include "fillit.h"
 
-static int	put_tetri(int s, char tab[s][s], t_coord diezes_pos[NB_DIEZE_POS], t_coord origin, char lettre)
-{
-	size_t		i;
-
-	i = 0;
-	while (i < NB_DIEZE_POS)
-	{
-		if (INDEX(tab, ADD_COORD(diezes_pos[i], origin)) != '.')
-			return (ERROR);
-		i++;
-	}
-	i = 0;
-	while (i < NB_DIEZE_POS)
-	{
-		INDEX(tab, ADD_COORD(diezes_pos[i], origin)) = lettre;
-		i++;
-	}
-	return (OK);
-}
-
 static int	try_again(int s, char tab[s][s], t_info *info, t_coord *origin, char lettre)
 {
 	while (origin->y <= s - info->size.y)
 	{
 		while (origin->x <= s - info->size.x)
 		{
-			if (put_tetri(s, tab, info->diezes_pos, *origin, lettre) == OK)
+			if (INDEX(tab, ADD_COORD(info->diezes_pos[0], *origin)) == '.' &&
+				INDEX(tab, ADD_COORD(info->diezes_pos[1], *origin)) == '.' &&
+				INDEX(tab, ADD_COORD(info->diezes_pos[2], *origin)) == '.' &&
+				INDEX(tab, ADD_COORD(info->diezes_pos[3], *origin)) == '.')
 			{
+				INDEX(tab, ADD_COORD(info->diezes_pos[0], *origin)) = lettre;
+				INDEX(tab, ADD_COORD(info->diezes_pos[1], *origin)) = lettre;
+				INDEX(tab, ADD_COORD(info->diezes_pos[2], *origin)) = lettre;
+				INDEX(tab, ADD_COORD(info->diezes_pos[3], *origin)) = lettre;
 				origin->x++;
 				return (OK);
 			}
