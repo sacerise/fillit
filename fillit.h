@@ -35,6 +35,7 @@ typedef	struct	s_coord
 }				t_coord;
 
 # define INDEX(tab, coord) ((tab)[(coord).y][(coord).x])
+# define ADD_COORD(a, b) ((t_coord){(a).x + (b).x, (a).y + (b).y})
 # define NB_DIEZE_POS 4
 # define NB_TETRIS 19
 

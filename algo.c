@@ -7,14 +7,14 @@ static int	put_tetri(int s, char tab[s][s], t_coord diezes_pos[NB_DIEZE_POS], t_
 	i = 0;
 	while (i < NB_DIEZE_POS)
 	{
-		if (INDEX(tab, add_coord(diezes_pos[i], origin)) != '.')
+		if (INDEX(tab, ADD_COORD(diezes_pos[i], origin)) != '.')
 			return (ERROR);
 		i++;
 	}
 	i = 0;
 	while (i < NB_DIEZE_POS)
 	{
-		INDEX(tab, add_coord(diezes_pos[i], origin)) = lettre;
+		INDEX(tab, ADD_COORD(diezes_pos[i], origin)) = lettre;
 		i++;
 	}
 	return (OK);
