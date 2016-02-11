@@ -3,19 +3,20 @@
 int		put_tetri(int s, char tab[s][s], t_coord diezes_pos[NB_DIEZE_POS], t_coord origin, char lettre)
 {
 	size_t		i;
-	char		cpy[s][s];
 
-	copy_tab(s, cpy, tab);
 	i = 0;
 	while (i < NB_DIEZE_POS)
 	{
-		if (INDEX(cpy, add_coord(diezes_pos[i], origin)) == '.')
-			INDEX(cpy, add_coord(diezes_pos[i], origin)) = lettre;
-		else
+		if (INDEX(tab, add_coord(diezes_pos[i], origin)) != '.')
 			return (ERROR);
 		i++;
 	}
-	copy_tab(s, tab, cpy);
+	i = 0;
+	while (i < NB_DIEZE_POS)
+	{
+		INDEX(tab, add_coord(diezes_pos[i], origin)) = lettre;
+		i++;
+	}
 	return (OK);
 }	
 
