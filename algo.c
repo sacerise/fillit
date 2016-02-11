@@ -33,18 +33,18 @@ static int	algo(int s, char tab[s][s], size_t nb_tetri, t_tetri *list, char lett
 
 	if (nb_tetri == 0)
 		return (OK);
-	copy_tab(s, cpy, tab);
+	ft_memcpy(cpy, tab, s * s);
 	origin.x = 0;
 	origin.y = 0;
 	while (try_again(s, cpy, &g_list_tetri[*list], &origin, lettre) == OK)
 	{
 		if (algo(s, cpy, nb_tetri - 1, list + 1, lettre + 1) == OK)
 		{
-			copy_tab(s, tab, cpy);
+			ft_memcpy(tab, cpy, s * s);
 			return (OK);
 		}
 		else
-			copy_tab(s, cpy, tab);
+			ft_memcpy(cpy, tab, s * s);
 	}
 	return (ERROR);
 }

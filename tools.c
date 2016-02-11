@@ -36,11 +36,6 @@ void	copy_sq(t_square dst, t_square const src)
 	}
 }
 
-void	copy_tab(size_t s, char dst[s][s], const char src[s][s])
-{
-	ft_memcpy(dst, src, s * s);
-}
-
 t_coord	add_coord(t_coord const c1, t_coord const c2)
 {
 	t_coord	tmp;
