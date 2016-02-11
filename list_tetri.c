@@ -39,7 +39,7 @@ t_info	list_tetri[NB_TETRIS] = {
 	},
 	{
 		.id = TETRI_7,
-		.diezes_pos = {{0,0}, {0,1}, {1,1}, {1,2}}
+		.diezes_pos = {{0,0}, {0,1}, {1,1}, {2,1}}
 	},
 	{
 		.id = TETRI_8,
