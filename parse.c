@@ -76,29 +76,28 @@ int		parse_sq(const t_square tab, t_tetri *tetri_p)
 int		parse_buf_2_sq(const char buf[BUF_SIZE], t_square tab)
 {
 	size_t	i;
-	size_t	x;
-	size_t	y;
+	t_coord	coord;
 
 	i = 0;
-	y = 0;
+	coord.y = 0;
 
-	while (y < 4)
+	while (coord.y < 4)
 	{
-		x = 0;
-		while (x < 4)
+		coord.x = 0;
+		while (coord.x < 4)
 		{
 			if(buf[i] == '#')
-				tab[y][x] = DIEZE;
+				tab[coord.y][coord.x] = DIEZE;
 			else if (buf[i] == '.')
-				tab[y][x] = POINT;
+				tab[coord.y][coord.x] = POINT;
 			else
 				return (ERROR);
-			x++;
+			coord.x++;
 			i++;
 		}
 		if (buf[i] != '\n')
 			return (ERROR);
-		y++;
+		coord.y++;
 		i++;
 	}
 	return (OK);
