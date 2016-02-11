@@ -71,12 +71,11 @@ typedef struct 	s_info
 }				t_info;
 
 extern t_info	list_tetri[NB_TETRIS];
-int				read_fuck(int fd, char *b, size_t size);
 void			make_sizes(t_info list_tetri[NB_TETRIS]);
-int				parse_buf_2_sq(const char buf[BUF_SIZE], t_square tab);
 int				parse(const char buf[BUF_SIZE], t_tetri *tetri);
 void			algo_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri);
 t_coord			add_coord(const t_coord c1, const t_coord c2);
+bool			is_empty_tab(const t_square tab);
 void			copy_tab(size_t s, char dst[s][s], const char src[s][s]);
 void			copy_sq(t_square dst, const t_square src);
 void	print_tab(size_t s, char tab[s][s]);

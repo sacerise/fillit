@@ -1,5 +1,24 @@
 #include "fillit.h"
 
+bool	is_empty_tab(const t_square tab)
+{
+	t_coord	coord;
+
+	coord.y = 0;
+	while (coord.y < 4)
+	{
+		coord.x = 0;
+		while (coord.x < 4)
+		{
+			if (INDEX(tab, coord) == DIEZE)
+				return (false);
+			coord.x++;
+		}
+		coord.y++;
+	}
+	return (true);
+}
+
 void	copy_sq(t_square dst, const t_square src)
 {
 	t_coord	coord;

@@ -14,6 +14,29 @@
 
 #include <stdio.h>
 
+int		read_fuck(int fd, char *b, size_t size)
+{
+	int		ret;
+	size_t	count;
+
+	count = 0;
+	while (count < size)
+	{
+		ret = read(fd, &b[count], size - count);
+		if (ret == -1)
+			return (-1);
+		else if (ret == 0)
+		{
+			if (count != 0)
+				return (-1);
+			else
+				return (0);
+		}
+		count += ret;
+	}
+	return(1);
+}
+
 int		read_return(int fd)
 {
 	int ret;

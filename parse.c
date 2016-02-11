@@ -13,26 +13,6 @@
 #include "fillit.h"
 #include <stdio.h>
 
-bool	is_empty_tab(const t_square tab)
-{
-	t_coord	coord;
-
-	coord.y = 0;
-	while (coord.y < 4)
-	{
-		coord.x = 0;
-		while (coord.x < 4)
-		{
-			if (INDEX(tab, coord) == DIEZE)
-				return (false);
-			coord.x++;
-		}
-		coord.y++;
-	}
-	return (true);
-}
-
-
 int		test_tetri(const t_square tab, const t_coord diezes_pos[NB_DIEZE_POS], t_coord origin)
 {
 	size_t		i;
@@ -92,6 +72,37 @@ int		parse_sq(const t_square tab, t_tetri *tetri_p)
 
 	return (ERROR);
 }	
+
+int		parse_buf_2_sq(const char buf[BUF_SIZE], t_square tab)
+{
+	size_t	i;
+	size_t	x;
+	size_t	y;
+
+	i = 0;
+	y = 0;
+
+	while (y < 4)
+	{
+		x = 0;
+		while (x < 4)
+		{
+			if(buf[i] == '#')
+				tab[y][x] = DIEZE;
+			else if (buf[i] == '.')
+				tab[y][x] = POINT;
+			else
+				return (ERROR);
+			x++;
+			i++;
+		}
+		if (buf[i] != '\n')
+			return (ERROR);
+		y++;
+		i++;
+	}
+	return (OK);
+}
 
 int		parse(const char buf[21], t_tetri *tetri)
 {
