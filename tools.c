@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-bool	is_empty_tab(const t_square tab)
+bool	is_empty_tab(t_square const tab)
 {
 	t_coord	coord;
 
@@ -19,7 +19,7 @@ bool	is_empty_tab(const t_square tab)
 	return (true);
 }
 
-void	copy_sq(t_square dst, const t_square src)
+void	copy_sq(t_square dst, t_square const src)
 {
 	t_coord	coord;
 
@@ -41,9 +41,9 @@ void	copy_tab(size_t s, char dst[s][s], const char src[s][s])
 	ft_memcpy(dst, src, s * s);
 }
 
-t_coord	add_coord(const t_coord c1, const t_coord c2)
+t_coord	add_coord(t_coord const c1, t_coord const c2)
 {
-	t_coord tmp;
+	t_coord	tmp;
 
 	tmp.x = c1.x + c2.x;
 	tmp.y = c1.y + c2.y;
@@ -52,7 +52,7 @@ t_coord	add_coord(const t_coord c1, const t_coord c2)
 
 void	print_tab(size_t s, char tab[s][s])
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < s)

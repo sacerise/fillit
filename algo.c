@@ -18,7 +18,7 @@ int		put_tetri(int s, char tab[s][s], t_coord diezes_pos[NB_DIEZE_POS], t_coord 
 		i++;
 	}
 	return (OK);
-}	
+}
 
 int		try_again(int s, char tab[s][s], t_info *info, t_coord *origin, char lettre)
 {
@@ -49,7 +49,7 @@ int		algo(int s, char tab[s][s], size_t nb_tetri, t_tetri *list, char lettre)
 	copy_tab(s, cpy, tab);
 	origin.x = 0;
 	origin.y = 0;
-	while (try_again(s, cpy, &list_tetri[*list], &origin, lettre) == OK)
+	while (try_again(s, cpy, &g_list_tetri[*list], &origin, lettre) == OK)
 	{
 		if (algo(s, cpy, nb_tetri - 1, list + 1, lettre + 1) == OK)
 		{
@@ -62,7 +62,7 @@ int		algo(int s, char tab[s][s], size_t nb_tetri, t_tetri *list, char lettre)
 	return (ERROR);
 }
 
-int	algo_pas_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri, int s)
+int		algo_pas_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri, int s)
 {
 	char tab[s][s];
 
@@ -81,4 +81,3 @@ void	algo_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri)
 	while (algo_pas_super(list, nb_tetri, s) == ERROR)
 		s++;
 }
-

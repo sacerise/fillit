@@ -28,19 +28,17 @@
 
 typedef	bool	t_square[4][4];
 
-typedef	struct s_coord
+typedef	struct	s_coord
 {
 	int	x;
 	int	y;
 }				t_coord;
 
-
-
 # define INDEX(tab, coord) ((tab)[(coord).y][(coord).x])
 # define NB_DIEZE_POS 4
 # define NB_TETRIS 19
 
-typedef enum 	e_tetri
+typedef enum	e_tetri
 {
 	TETRI_1,
 	TETRI_2,
@@ -63,14 +61,14 @@ typedef enum 	e_tetri
 	TETRI_19,
 }				t_tetri;
 
-typedef struct 	s_info
+typedef struct	s_info
 {
 	t_tetri id;
 	t_coord diezes_pos[NB_DIEZE_POS];
 	t_coord	size;
 }				t_info;
 
-extern t_info	list_tetri[NB_TETRIS];
+extern t_info	g_list_tetri[NB_TETRIS];
 void			make_sizes(t_info list_tetri[NB_TETRIS]);
 int				parse(const char buf[BUF_SIZE], t_tetri *tetri);
 void			algo_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri);
@@ -78,6 +76,6 @@ t_coord			add_coord(const t_coord c1, const t_coord c2);
 bool			is_empty_tab(const t_square tab);
 void			copy_tab(size_t s, char dst[s][s], const char src[s][s]);
 void			copy_sq(t_square dst, const t_square src);
-void	print_tab(size_t s, char tab[s][s]);
+void			print_tab(size_t s, char tab[s][s]);
 
 #endif

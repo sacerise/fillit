@@ -34,13 +34,13 @@ int		read_fuck(int fd, char *b, size_t size)
 		}
 		count += ret;
 	}
-	return(1);
+	return (1);
 }
 
 int		read_return(int fd)
 {
-	int ret;
-	char c;
+	int		ret;
+	char	c;
 
 	ret = read(fd, &c, 1);
 	if (ret != 1)
@@ -74,8 +74,7 @@ int		read_tetris(int fd, t_tetri list[NB_LIST_TETRI_MAX], size_t *nb_tetri)
 
 int		main(int ac, char **av)
 {
-
-	int 		fd;
+	int			fd;
 	t_tetri		list[NB_LIST_TETRI_MAX];
 	size_t		nb_tetri;
 	int			ret;
@@ -84,8 +83,8 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		return (1);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return(0);
-	make_sizes(list_tetri);
+		return (0);
+	make_sizes(g_list_tetri);
 	ret = read_tetris(fd, list, &nb_tetri);
 	close(fd);
 	if (ret == 0)
@@ -99,4 +98,3 @@ int		main(int ac, char **av)
 		return (1);
 	}
 }
-
