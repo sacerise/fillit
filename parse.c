@@ -13,8 +13,8 @@
 #include "fillit.h"
 #include <stdio.h>
 
-int		test_tetri(t_square const tab, t_coord const diezes_pos[NB_DIEZE_POS],
-				t_coord origin)
+static int	test_tetri(t_square const tab,
+						t_coord const diezes_pos[NB_DIEZE_POS], t_coord origin)
 {
 	size_t		i;
 	t_square	cpy;
@@ -37,7 +37,7 @@ int		test_tetri(t_square const tab, t_coord const diezes_pos[NB_DIEZE_POS],
 		return (ERROR);
 }
 
-int		test_origins(t_square const tab, t_info const *info)
+static int	test_origins(t_square const tab, t_info const *info)
 {
 	t_coord	origin;
 
@@ -56,7 +56,7 @@ int		test_origins(t_square const tab, t_info const *info)
 	return (ERROR);
 }
 
-int		parse_sq(t_square const tab, t_tetri *tetri_p)
+static int	parse_sq(t_square const tab, t_tetri *tetri_p)
 {
 	size_t	i;
 
@@ -73,7 +73,7 @@ int		parse_sq(t_square const tab, t_tetri *tetri_p)
 	return (ERROR);
 }
 
-int		parse_buf_2_sq(char const buf[BUF_SIZE], t_square tab)
+static int	parse_buf_2_sq(char const buf[BUF_SIZE], t_square tab)
 {
 	size_t	i;
 	t_coord	coord;
@@ -102,7 +102,7 @@ int		parse_buf_2_sq(char const buf[BUF_SIZE], t_square tab)
 	return (OK);
 }
 
-int		parse(char const buf[BUF_SIZE], t_tetri *tetri)
+int			parse(char const buf[BUF_SIZE], t_tetri *tetri)
 {
 	t_square	tab;
 

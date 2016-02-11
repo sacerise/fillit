@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-int		read_fuck(int fd, char *b, size_t size)
+static int	read_fuck(int fd, char *b, size_t size)
 {
 	int		ret;
 	size_t	count;
@@ -37,7 +37,7 @@ int		read_fuck(int fd, char *b, size_t size)
 	return (1);
 }
 
-int		read_return(int fd)
+static int	read_return(int fd)
 {
 	int		ret;
 	char	c;
@@ -51,7 +51,8 @@ int		read_return(int fd)
 		return (-1);
 }
 
-int		read_tetris(int fd, t_tetri list[NB_LIST_TETRI_MAX], size_t *nb_tetri)
+static int	read_tetris(int fd,
+						t_tetri list[NB_LIST_TETRI_MAX], size_t *nb_tetri)
 {
 	int		ret;
 	char	buf[BUF_SIZE];
@@ -72,7 +73,7 @@ int		read_tetris(int fd, t_tetri list[NB_LIST_TETRI_MAX], size_t *nb_tetri)
 	return (-1);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	int			fd;
 	t_tetri		list[NB_LIST_TETRI_MAX];
