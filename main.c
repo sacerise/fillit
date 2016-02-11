@@ -12,8 +12,6 @@
 
 #include "fillit.h"
 
-#include <stdio.h>
-
 static int	read_fuck(int fd, char *b, size_t size)
 {
 	int		ret;

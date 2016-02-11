@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static int	test_tetri(t_square const tab,
 						t_coord const diezes_pos[NB_DIEZE_POS], t_coord origin)
