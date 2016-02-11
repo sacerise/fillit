@@ -16,7 +16,7 @@ LIB=libft/libft.a
 
 INC=libft/
 
-CC=gcc
+CC=clang
 
 CFLAGS= -Wall -Wextra -Werror
 
