@@ -30,8 +30,8 @@ typedef	bool	t_square[4][4];
 
 typedef	struct s_coord
 {
-	size_t	x;
-	size_t	y;
+	int	x;
+	int	y;
 }				t_coord;
 
 

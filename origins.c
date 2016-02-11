@@ -1,7 +1,7 @@
 #include "fillit.h"
 #include <stdio.h>
 
-static void		max(size_t *a, const size_t b)
+static void		max(int *a, const int b)
 {
 	if (b > *a)
 		*a = b;

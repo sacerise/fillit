@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-int		put_tetri(size_t s, char tab[s][s], t_coord diezes_pos[NB_DIEZE_POS], t_coord origin, char lettre)
+int		put_tetri(int s, char tab[s][s], t_coord diezes_pos[NB_DIEZE_POS], t_coord origin, char lettre)
 {
 	size_t		i;
 	char		cpy[s][s];
@@ -19,11 +19,11 @@ int		put_tetri(size_t s, char tab[s][s], t_coord diezes_pos[NB_DIEZE_POS], t_coo
 	return (OK);
 }	
 
-int		try_again(size_t s, char tab[s][s], t_info *info, t_coord *origin, char lettre)
+int		try_again(int s, char tab[s][s], t_info *info, t_coord *origin, char lettre)
 {
-	while ((long)origin->y <= (long)s - (long)info->size.y)
+	while (origin->y <= s - info->size.y)
 	{
-		while ((long)origin->x <= (long)s - (long)info->size.x)
+		while (origin->x <= s - info->size.x)
 		{
 			if (put_tetri(s, tab, info->diezes_pos, *origin, lettre) == OK)
 			{
@@ -38,7 +38,7 @@ int		try_again(size_t s, char tab[s][s], t_info *info, t_coord *origin, char let
 	return (ERROR);
 }
 
-int		algo(size_t s, char tab[s][s], size_t nb_tetri, t_tetri *list, char lettre)
+int		algo(int s, char tab[s][s], size_t nb_tetri, t_tetri *list, char lettre)
 {
 	t_coord		origin;
 	char		cpy[s][s];
@@ -61,7 +61,7 @@ int		algo(size_t s, char tab[s][s], size_t nb_tetri, t_tetri *list, char lettre)
 	return (ERROR);
 }
 
-int	algo_pas_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri, size_t s)
+int	algo_pas_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri, int s)
 {
 	char tab[s][s];
 
@@ -74,7 +74,7 @@ int	algo_pas_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri, size_t s)
 
 void	algo_super(t_tetri list[NB_LIST_TETRI_MAX], size_t nb_tetri)
 {
-	size_t s;
+	int s;
 
 	s = 2;
 	while (algo_pas_super(list, nb_tetri, s) == ERROR)
