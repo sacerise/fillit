@@ -73,6 +73,13 @@ static int	read_tetris(int fd,
 	return (-1);
 }
 
+void		usage(char *prog_name)
+{
+	ft_putstr_fd("usage: ", 2);
+	ft_putstr_fd(prog_name, 2);
+	ft_putendl_fd(" tetri_file", 2);
+}
+
 int			main(int ac, char **av)
 {
 	int			fd;
@@ -82,20 +89,18 @@ int			main(int ac, char **av)
 
 	fd = 0;
 	if (ac != 2)
+	{
+		usage(av[0]);
 		return (1);
+	}
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return (0);
 	make_sizes(g_list_tetri);
 	ret = read_tetris(fd, list, &nb_tetri);
 	close(fd);
 	if (ret == 0)
-	{
 		algo_super(list, nb_tetri);
-		return (0);
-	}
 	else
-	{
 		ft_putendl_fd("ERROR", 2);
-		return (1);
-	}
+	return (ret == 0 ? 0 : 1);
 }
