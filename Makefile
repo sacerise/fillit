@@ -26,7 +26,7 @@ OBJ=read.o ft_get_tetri.o main.o list_tetri.o origins.o algo.o tools.o
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.c fillit.h
 	$(CC) $(CFLAGS) -I $(INC) -o $@ $< -c
 
 $(NAME): $(OBJ) $(LIB)
