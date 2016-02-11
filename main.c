@@ -94,13 +94,16 @@ int			main(int ac, char **av)
 		return (1);
 	}
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return (0);
+	{
+		ft_putendl_fd("error", 2);
+		return (1);
+	}
 	make_sizes(g_list_tetri);
 	ret = read_tetris(fd, list, &nb_tetri);
 	close(fd);
 	if (ret == 0)
 		algo_super(list, nb_tetri);
 	else
-		ft_putendl_fd("ERROR", 2);
+		ft_putendl_fd("error", 2);
 	return (ret == 0 ? 0 : 1);
 }
