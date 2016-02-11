@@ -19,7 +19,7 @@
 # include <stdbool.h>
 # include <libft.h>
 
-# define BUF_SIZE 21
+# define BUF_SIZE 20
 # define OK 1
 # define ERROR 0
 # define DIEZE true

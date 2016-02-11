@@ -14,17 +14,29 @@
 
 #include <stdio.h>
 
+int		read_return(int fd)
+{
+	int ret;
+	char c;
+
+	ret = read(fd, &c, 1);
+	if (ret != 1)
+		return (ret);
+	if (c == '\n')
+		return (1);
+	else
+		return (-1);
+}
+
 int 	read_tetri(int fd, t_tetri *tetri)
 {
 	char	buf[BUF_SIZE];
-	int		ret;
 
-	ret = read_fuck(fd, buf, BUF_SIZE);
-	if (ret != 1)
-		return (ret);
+	if (read_fuck(fd, buf, BUF_SIZE) != 1)
+		return (-1);
 	if (parse(buf, tetri) == ERROR)
 		return (-1);
-	return (OK);
+	return (read_return(fd));
 }
 
 int		main(int ac, char **av)
@@ -43,10 +55,15 @@ int		main(int ac, char **av)
 		return(0);
 	make_sizes(list_tetri);
 	nb_tetri = 0;
-	while (nb_tetri < NB_LIST_TETRI_MAX && (ret = read_tetri(fd, &tetri)) == 1)
+	while (nb_tetri < NB_LIST_TETRI_MAX)
 	{
+		ret = read_tetri(fd, &tetri);
+		if (ret == -1)
+			break ;
 		list[nb_tetri] = tetri;
 		nb_tetri++;
+		if (ret == 0)
+			break ;
 	}
 	close(fd);
 	if (ret == 0)

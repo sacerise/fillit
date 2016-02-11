@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int		parse_buf_2_sq(const char buf[21], t_square tab)
+int		parse_buf_2_sq(const char buf[BUF_SIZE], t_square tab)
 {
 	size_t	i;
 	size_t	x;
