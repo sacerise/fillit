@@ -28,22 +28,31 @@ int		read_return(int fd)
 		return (-1);
 }
 
-int 	read_tetri(int fd, t_tetri *tetri)
+int		read_tetris(int fd, t_tetri list[NB_LIST_TETRI_MAX], size_t *nb_tetri)
 {
+	int		ret;
 	char	buf[BUF_SIZE];
+	t_tetri	tetri;
 
-	if (read_fuck(fd, buf, BUF_SIZE) != 1)
-		return (-1);
-	if (parse(buf, tetri) == ERROR)
-		return (-1);
-	return (read_return(fd));
+	*nb_tetri = 0;
+	while (*nb_tetri < NB_LIST_TETRI_MAX)
+	{
+		if (read_fuck(fd, buf, BUF_SIZE) != 1)
+			return (-1);
+		if (parse(buf, &tetri) == ERROR)
+			return (-1);
+		list[*nb_tetri] = tetri;
+		(*nb_tetri)++;
+		if ((ret = read_return(fd)) != 1)
+			return (ret);
+	}
+	return (-1);
 }
 
 int		main(int ac, char **av)
 {
 
 	int 		fd;
-	t_tetri		tetri;
 	t_tetri		list[NB_LIST_TETRI_MAX];
 	size_t		nb_tetri;
 	int			ret;
@@ -54,17 +63,7 @@ int		main(int ac, char **av)
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return(0);
 	make_sizes(list_tetri);
-	nb_tetri = 0;
-	while (nb_tetri < NB_LIST_TETRI_MAX)
-	{
-		ret = read_tetri(fd, &tetri);
-		if (ret == -1)
-			break ;
-		list[nb_tetri] = tetri;
-		nb_tetri++;
-		if (ret == 0)
-			break ;
-	}
+	ret = read_tetris(fd, list, &nb_tetri);
 	close(fd);
 	if (ret == 0)
 	{
