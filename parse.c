@@ -104,7 +104,7 @@ int		parse_buf_2_sq(const char buf[BUF_SIZE], t_square tab)
 	return (OK);
 }
 
-int		parse(const char buf[21], t_tetri *tetri)
+int		parse(const char buf[BUF_SIZE], t_tetri *tetri)
 {
 	t_square	tab;
 
