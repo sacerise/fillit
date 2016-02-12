@@ -1,6 +1,7 @@
 #include "fillit.h"
 
-static int	try_again(int s, char tab[s][s], t_info *info, t_coord *origin, char lettre)
+static int	try_again(STAB tab[s][s], t_info *info,
+					t_coord *origin, char lettre)
 {
 	while (origin->y <= s - info->size.y)
 	{
@@ -26,7 +27,7 @@ static int	try_again(int s, char tab[s][s], t_info *info, t_coord *origin, char 
 	return (ERROR);
 }
 
-static int	algo(int s, char tab[s][s], size_t nb_tetri, t_tetri *list, char lettre)
+static int	algo(STAB tab[s][s], size_t nb_tetri, t_tetri *list, char lettre)
 {
 	t_coord		origin;
 	char		cpy[s][s];
